@@ -1,20 +1,21 @@
 require 'rspec'
 require 'selenium-webdriver'
 
-describe 'Google search' do
+describe 'Login page' do
   before(:each) do
-    @driver = Selenium::WebDriver.for(:chrome)
-    @wait = Selenium::WebDriver::Wait.new(:timeout => 10)
-  end
+      @driver = Selenium::WebDriver.for(:chrome)
+      @wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+    end
 
-  it 'should find webdriver' do
-    @driver.navigate.to 'http://google.com'
-    @driver.find_element(:name, 'q').send_keys 'webdriver'
-    @driver.find_element(:name, 'btnG').click
-    @wait.until { @driver.title == 'webdriver - Поиск в Google'}
+  it 'should enter login' do
+    @driver.navigate.to 'http://localhost/litecart/public_html/en/'
+    @driver.find_element(:name, 'email').send_keys 'admin'
+    @driver.find_element(:name, 'password').send_keys 'admin'
+    @driver.find_element(:name, 'login').click
+   # @wait.until { @driver.title == 'webdriver - Поиск в Google'}
   end
 
   after(:each) do
-    @driver.quit
-  end
+      @driver.quit
+    end
 end
