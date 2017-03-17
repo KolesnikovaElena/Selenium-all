@@ -12,7 +12,6 @@ describe 'Login page' do
     @driver.find_element(:name, 'email').send_keys 'admin'
     @driver.find_element(:name, 'password').send_keys 'admin'
     @driver.find_element(:name, 'login').click
-   # @wait.until { @driver.title == 'webdriver - Поиск в Google'}
   end
 
   after(:each) do
